@@ -1,18 +1,20 @@
 import { StyleSheet, Dimensions } from 'react-native'
 
-const { height } = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 
 import { Colors, Metrics } from '~/theme';
 
 export default StyleSheet.create({
     userListContainer: {
-        height: height - 200,
+        flexDirection: 'column',
+        flexGrow: 1,
     },
 
     userListItemContainer: {
         height: Metrics.listItemHeight,
         borderBottomWidth: StyleSheet.hairlineWidth,
         borderBottomColor: Colors.separator,
+        flexGrow: 0,
     },
 
     userListItemContent: {
@@ -34,24 +36,37 @@ export default StyleSheet.create({
         fontWeight: 'bold',
     },
 
+    userAvatarContainer: {
+        height: 48,
+        width: 48,
+        borderRadius: 48/2,
+        overflow: 'hidden',
+        marginRight: Metrics.baseMargin * 2,
+        borderColor: Colors.border,
+    },
 
     userAvatar: {
-        height: 56,
-        width: 56,
+        height: 48,
+        width: 48,
         resizeMode: 'contain',
-        borderRadius: 56/2,
+        borderRadius: 48/2,
         borderWidth: StyleSheet.hairlineWidth,
         backgroundColor: Colors.primary,
-        borderColor: Colors.border,
-        marginRight: Metrics.baseMargin * 2,
+    },
+
+    usersPage: {
+        flexGrow: 1,
+        width,
+        height,
+        flexDirection: 'column',
     },
 
 
     pageIndicatorContainer: {
         flexGrow: 0,
         marginHorizontal: Metrics.baseMargin * 3,
-        height: Metrics.baseMargin * 3,
-        paddingVertical: Metrics.baseMargin * 2,
+        height: Metrics.baseMargin * 6,
+        paddingBottom: Metrics.baseMargin * 3,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
@@ -72,12 +87,12 @@ export default StyleSheet.create({
 
     createUserFab: {
         position: 'absolute',
-        bottom: 80,
-        right: 32,
+        bottom: Metrics.baseMargin * 8,
+        right: Metrics.baseMargin * 2,
         backgroundColor: Colors.primary,
-        width: 64,
-        height: 64,
-        borderRadius: 64/2,
+        width:  Metrics.baseMargin * 8,
+        height:  Metrics.baseMargin * 8,
+        borderRadius:  Metrics.baseMargin * 4,
         alignItems: 'center',
         justifyContent: 'center'
     },

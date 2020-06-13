@@ -8,7 +8,7 @@ import styles from './LayoutStyle';
 export default function Layout({ children }) {
     return (
         <>
-            <StatusBar style="dark" />
+            <StatusBar style="light" />
             <Header title="Список пользователей" />
             <View style={styles.contentContainer}>
                 {children}

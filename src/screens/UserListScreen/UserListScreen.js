@@ -1,6 +1,6 @@
-import React, {  useRef } from 'react';
+import React, { useRef } from 'react';
 import ViewPager from '@react-native-community/viewpager';
-import { ScrollView } from 'react-native-gesture-handler';
+import { View, ScrollView } from 'react-native';
 
 import { useDispatch, useSelector } from "react-redux";
 import UserActions from '~/redux/UserRedux';
@@ -13,6 +13,7 @@ import CreateUserFab from './CreateUserFab';
 import UserDetailsSheet from '~/screens/UserDetailsSheet';
 
 import styles from './UserListScreenStyle';
+import { page } from '../../sagas/UserSagas';
 
 export default function UserListScreen() {
     const dispatch = useDispatch();
@@ -38,33 +39,34 @@ export default function UserListScreen() {
     const renderPages = () => {
         const pagesList = [...Array(totalPages).keys()];
 
-        return pagesList.map((page) => <UserPage 
-            page={page}
-            key={`page-${page}`} 
-            onShowUser={handleShowUser}
-        />);
+        return pagesList.map((page) => (
+            <View key={`page-${page}`}>
+                <UserPage
+                    page={page}
+                    onShowUser={handleShowUser}
+                />
+            </View>
+        ));
     }
 
     return (
         <>
             <Layout>
-                <ScrollView>
-                    <ViewPager 
-                        style={styles.userListContainer} 
-                        initialPage={0}
-                        onPageSelected={handlePageSelect}
-                    >
-                        {renderPages()}
-                    </ViewPager>
-                </ScrollView>
+                <ViewPager
+                    style={styles.userListContainer}
+                    initialPage={0}
+                    onPageSelected={handlePageSelect}
+                >
+                    {renderPages()}
+                </ViewPager>
                 <PageIndicator totalPages={totalPages} currentPage={currentPage} />
                 <CreateUserFab onPress={handleCreateUser} />
             </Layout>
-            <UserDetailsSheet 
-                ref={userDetailsSheetRef} 
+            <UserDetailsSheet
+                ref={userDetailsSheetRef}
             />
         </>
-        
+
     );
 }
 

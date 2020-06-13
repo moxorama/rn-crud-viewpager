@@ -4,10 +4,9 @@ import { useSelector } from "react-redux";
 
 import UserListItem from './UserListItem';
 
-const { width, height } = Dimensions.get('window');
+import styles from './UserListScreenStyle';
 
 export default function UserPage({ page, onShowUser }) {
-    const fetching = useSelector(state => state.user.fetching);
     const content = useSelector(state => state.user.content);
 
     const users = content?.[page] ?? [];
@@ -18,11 +17,13 @@ export default function UserPage({ page, onShowUser }) {
                 user={user} 
                 key={`user-${user?.id}`}
                 onPress={onShowUser}
-            />));
+            />)
+        );
     }
 
+
     return (
-        <View style={{ width, height: height - 100 }}>
+        <View style={styles.userPage} key={`page-${page}`}>
             {renderUsers()}
         </View>
     );

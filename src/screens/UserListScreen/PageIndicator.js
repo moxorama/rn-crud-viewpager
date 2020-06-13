@@ -1,6 +1,5 @@
 import React from 'react';
 import { View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 import styles from './UserListScreenStyle';
@@ -20,9 +19,9 @@ export default function PageIndicator({ currentPage, totalPages }) {
     }
 
     return (
-        <SafeAreaView style={styles.pageIndicatorContainer}>
+        <View style={styles.pageIndicatorContainer}>
             {renderDots()}
-        </SafeAreaView>
+        </View>
     );
 }
 

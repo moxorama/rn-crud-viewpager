@@ -15,10 +15,12 @@ export default function UserListItem({ user, onPress }) {
         <View style={styles.userListItemContainer}>
             <RectButton style={styles.userListItemContent} onPress={handlePress}>
                 <View style={styles.userInfo}>
-                    <Image 
-                        source={{ uri: user?.avatar }}
-                        style={styles.userAvatar}
-                    />
+                    <View style={styles.userAvatarContainer}>
+                        <Image 
+                            source={{ uri: user?.avatar }}
+                            style={styles.userAvatar}
+                        />
+                    </View>
                     <View style={styles.userContacts}>
                         <Text style={styles.userName}>
                             {`${user?.first_name} ${user?.last_name}`}

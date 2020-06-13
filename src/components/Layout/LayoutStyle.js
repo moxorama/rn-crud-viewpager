@@ -6,8 +6,8 @@ import { Colors } from '~/theme';
 export default StyleSheet.create({
     headerContainer: {
         paddingTop: Constants.statusBarHeight,
-        height: 72,
-        flexGrow: 1,
+        height: 64 + Constants.statusBarHeight,
+        flexGrow: 0,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
