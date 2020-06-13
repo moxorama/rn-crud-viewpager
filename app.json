@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "pagingscroll",
-    "slug": "pagingscroll",
+    "name": "ViewPager Crud application",
+    "slug": "viewpager_crud",
     "platforms": [
       "ios",
       "android",
@@ -22,7 +22,7 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false
     }
   }
 }
