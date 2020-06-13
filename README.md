@@ -1,2 +1,1 @@
-# rn-paging-scroll-crud
-Simple react native crud app with infinite scrolling
+Простое демо React Native приложения, с использованием ViewPager, BottomSheet и REST API
