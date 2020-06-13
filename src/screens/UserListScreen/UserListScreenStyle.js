@@ -41,6 +41,7 @@ export default StyleSheet.create({
         resizeMode: 'contain',
         borderRadius: 56/2,
         borderWidth: StyleSheet.hairlineWidth,
+        backgroundColor: Colors.primary,
         borderColor: Colors.border,
         marginRight: Metrics.baseMargin * 2,
     },
@@ -67,5 +68,26 @@ export default StyleSheet.create({
 
     viewPagerDotSelected: {
         backgroundColor: Colors.primary,
+    },
+
+    createUserFab: {
+        position: 'absolute',
+        bottom: 80,
+        right: 32,
+        backgroundColor: Colors.primary,
+        width: 64,
+        height: 64,
+        borderRadius: 64/2,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+
+    createUserFabContent: {
+        color: Colors.contentOnPrimary,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 32,
+        height: 32,
+        textAlign: 'center',
     },
 });

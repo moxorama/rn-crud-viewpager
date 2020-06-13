@@ -11,12 +11,12 @@ export default StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: Metrics.baseMargin,
+        marginBottom: Metrics.baseMargin,
     },
 
     avatar: {
-        height: Metrics.baseMargin * 16,
-        width: Metrics.baseMargin * 16,
+        height: Metrics.baseMargin * 12,
+        width: Metrics.baseMargin * 12,
         borderRadius: Metrics.baseMargin * 8,
         backgroundColor: Colors.primary,
     },
@@ -29,13 +29,13 @@ export default StyleSheet.create({
         paddingHorizontal: Metrics.baseMargin,
         fontSize: 16,
         fontWeight: 'bold',
-
     },
 
     headerContainer: {
         flexDirection: 'row',
         justifyContent: 'flex-end',
-        padding: Metrics.baseMargin * 2,
+        paddingHorizontal: Metrics.baseMargin * 2,
+        paddingTop: Metrics.baseMargin,
     },
 
     destroyIcon: {
@@ -43,6 +43,7 @@ export default StyleSheet.create({
     },
 
     footerContainer: {
-        padding: Metrics.baseMargin * 2,
+        paddingHorizontal: Metrics.baseMargin * 2,
+        paddingBottom: Metrics.baseMargin * 2,
     }
 });

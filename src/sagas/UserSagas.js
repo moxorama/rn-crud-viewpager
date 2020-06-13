@@ -16,12 +16,12 @@ export function* page(api) {
     }
 }
 
-    /* 
-    Если бы API реально работал на обновление данных - я бы сделал после любого изменения так 
+/* 
+    Если бы API реально работал на обновление данных - имело бы смысл сделать так
     if (response.ok) {
         yield put(UserActions.pageRequest());
     }
-    */
+*/
 
 export function* update(api, { user }) {
     const response = yield call(api.updateUser, { userId: user?.id, user });
@@ -41,5 +41,15 @@ export function* destroy(api, { userId }) {
     if (response.ok) {
         yield put(UserActions.deleteSuccess({ userId }));
     }
+}
 
+
+export function* create(api, { user }) {
+    const response = yield call(api.createUser, { user });
+
+    if (response.ok) {
+        const userId = response?.data?.id;
+        const newUser = { ...user, id: userId };
+        yield put(UserActions.createSuccess({ user: newUser }));
+    }
 }

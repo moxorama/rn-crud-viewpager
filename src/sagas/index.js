@@ -6,6 +6,7 @@ import { UserTypes } from '~/redux/UserRedux';
 import {
     update,
     destroy,
+    create,
     page
 } from './UserSagas';
 
@@ -17,7 +18,7 @@ export default function* root() {
         takeLatest(UserTypes.PAGE_REQUEST, page, api),
         takeLatest(UserTypes.UPDATE_REQUEST, update, api),
         takeLatest(UserTypes.DELETE_REQUEST, destroy, api),
-
+        takeLatest(UserTypes.CREATE_REQUEST, create, api),
     ])
 
 }

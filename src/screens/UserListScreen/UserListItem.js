@@ -16,7 +16,7 @@ export default function UserListItem({ user, onPress }) {
             <RectButton style={styles.userListItemContent} onPress={handlePress}>
                 <View style={styles.userInfo}>
                     <Image 
-                        source={{ uri: user.avatar }}
+                        source={{ uri: user?.avatar }}
                         style={styles.userAvatar}
                     />
                     <View style={styles.userContacts}>

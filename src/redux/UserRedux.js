@@ -17,6 +17,9 @@ const { Types, Creators } = createActions({
     updateRequest: { user: undefined },
     updateSuccess: { user: undefined },
 
+    createRequest: { user: undefined },
+    createSuccess: { user: undefined },
+
     deleteRequest: { userId: undefined },
     deleteSuccess: { userId: undefined },
 });
@@ -33,7 +36,6 @@ const pageRequest = (state) =>
     state.merge({ fetching: true });
 
 const pageSuccess = (state, { pageUsers, totalPages }) => {
-
     const nextState = state.setIn(
         ['content', state.currentPage], 
         pageUsers
@@ -65,6 +67,7 @@ const updateSuccess = (state, { user }) => {
 const deleteRequest = (state, { userId }) => 
     state.merge({ fetching: true });
 
+
 const deleteSuccess = (state, { userId }) => {
     const pageUsers = state.content[state.currentPage]
         .filter((user) => user?.id !== userId)
@@ -78,6 +81,26 @@ const deleteSuccess = (state, { userId }) => {
 
     return nextState;
 }
+
+
+const createRequest = (state, { user }) => 
+    state.merge({ fetching: true });
+
+const createSuccess = (state, { user }) => {
+    const lastIdx = state.content[state.currentPage].length
+
+    console.log(user);
+
+    const nextState = state.setIn(
+        ['content', state.currentPage, lastIdx], 
+        user
+    ).merge({
+        fetching: false,
+    });
+
+    return nextState;
+}
+
 
 /* ------------- Initial State ------------- */
 export const INITIAL_STATE = Immutable({
@@ -100,6 +123,9 @@ export const reducer = createReducer(INITIAL_STATE, {
 
     [Types.DELETE_REQUEST]: deleteRequest,
     [Types.DELETE_SUCCESS]: deleteSuccess,
+
+    [Types.CREATE_REQUEST]: createRequest,
+    [Types.CREATE_SUCCESS]: createSuccess,
 });
 
 /* ------------- Selectors ------------- */

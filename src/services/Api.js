@@ -21,12 +21,14 @@ const create = (baseURL = 'https://reqres.in') => {
     const listUsers = ({ page }) => api.get('/api/users', { page })
     const updateUser = ({ userId, user }) => api.put(`/api/users/${userId}`, { user });
     const deleteUser = ({ userId }) => api.delete(`/api/users/${userId}`);
+    const createUser = ({ user }) => api.post(`/api/users/`, { user });
 
 
     return {
         listUsers,
         updateUser,
         deleteUser,
+        createUser,
     };
 };
 

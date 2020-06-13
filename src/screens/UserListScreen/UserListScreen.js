@@ -9,9 +9,10 @@ import Layout from '~/components/Layout';
 
 import UserPage from './UserPage';
 import PageIndicator from './PageIndicator';
+import CreateUserFab from './CreateUserFab';
+import UserDetailsSheet from '~/screens/UserDetailsSheet';
 
 import styles from './UserListScreenStyle';
-import UserDetailsSheet from '~/screens/UserDetailsSheet';
 
 export default function UserListScreen() {
     const dispatch = useDispatch();
@@ -20,8 +21,12 @@ export default function UserListScreen() {
     const currentPage = useSelector(state => state.user.currentPage);
     const totalPages = useSelector(state => state.user.totalPages);
 
-    const showUser = ({ user }) => {
+    const handleShowUser = ({ user }) => {
         userDetailsSheetRef?.current?.open({ user });
+    }
+
+    const handleCreateUser = () => {
+        userDetailsSheetRef?.current?.open({ user: { id: null } });
     }
 
     const handlePageSelect = ({ nativeEvent }) => {
@@ -29,13 +34,14 @@ export default function UserListScreen() {
         dispatch(UserActions.setPage({ currentPage: position }));
     }
 
+
     const renderPages = () => {
         const pagesList = [...Array(totalPages).keys()];
 
         return pagesList.map((page) => <UserPage 
             page={page}
             key={`page-${page}`} 
-            onShowUser={showUser}
+            onShowUser={handleShowUser}
         />);
     }
 
@@ -52,6 +58,7 @@ export default function UserListScreen() {
                     </ViewPager>
                 </ScrollView>
                 <PageIndicator totalPages={totalPages} currentPage={currentPage} />
+                <CreateUserFab onPress={handleCreateUser} />
             </Layout>
             <UserDetailsSheet 
                 ref={userDetailsSheetRef} 
