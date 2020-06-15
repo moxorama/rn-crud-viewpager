@@ -15,9 +15,9 @@ export default StyleSheet.create({
     },
 
     avatar: {
-        height: Metrics.baseMargin * 12,
-        width: Metrics.baseMargin * 12,
-        borderRadius: Metrics.baseMargin * 8,
+        height: Metrics.baseMargin * 10,
+        width: Metrics.baseMargin * 10,
+        borderRadius: Metrics.baseMargin * 5,
         backgroundColor: Colors.primary,
     },
 
@@ -28,7 +28,6 @@ export default StyleSheet.create({
         height: Metrics.baseMargin * 5,
         paddingHorizontal: Metrics.baseMargin,
         fontSize: 16,
-        fontWeight: 'bold',
     },
 
     headerContainer: {

@@ -1,10 +1,10 @@
-import { put, call, select, delay } from 'redux-saga/effects';
+import { put, call, select } from 'redux-saga/effects';
 import UserActions, { getCurrentPage } from '~/redux/UserRedux';
 
 export function* page(api) {
-    // В UI страницы 0-based
     const currentPage = yield select(getCurrentPage);
 
+    // В UI страницы 0-based
     const response = yield call(api.listUsers, { page: currentPage + 1 });
 
     if (response.ok) {
@@ -13,6 +13,8 @@ export function* page(api) {
             pageUsers: response?.data?.data,
             totalPages: response?.data?.total_pages,
         }))
+    } else {
+        yield put(UserActions.fail({ error: response.problem }))
     }
 }
 
@@ -30,8 +32,9 @@ export function* update(api, { user }) {
     if (response.ok) {
         const user = response?.data?.user;
         yield put(UserActions.updateSuccess({ user }));
+    } else {
+        yield put(UserActions.fail({ error: response.problem }))
     }
-
 }
 
 
@@ -40,6 +43,8 @@ export function* destroy(api, { userId }) {
 
     if (response.ok) {
         yield put(UserActions.deleteSuccess({ userId }));
+    } else {
+        yield put(UserActions.fail({ error: response.problem }))
     }
 }
 
@@ -51,5 +56,7 @@ export function* create(api, { user }) {
         const userId = response?.data?.id;
         const newUser = { ...user, id: userId };
         yield put(UserActions.createSuccess({ user: newUser }));
+    } else {
+        yield put(UserActions.fail({ error: response.problem }))
     }
 }

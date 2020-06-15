@@ -8,7 +8,13 @@ import styles from './UserListScreenStyle';
 export default function PageIndicator({ currentPage, totalPages }) {
     renderDot = (dotNumber) => {
         return (
-            <View key={`dot-${dotNumber}`} style={[styles.viewPagerDot, (currentPage === dotNumber) && styles.viewPagerDotSelected]} />
+            <View 
+                key={`dot-${dotNumber}`} 
+                style={[
+                    styles.viewPagerDot, 
+                    (currentPage === dotNumber) && styles.viewPagerDotSelected
+                ]} 
+            />
         );
     }
 

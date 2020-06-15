@@ -1,5 +1,6 @@
 import { createReducer, createActions } from 'reduxsauce';
 import Immutable from 'seamless-immutable';
+import { FlatList } from 'react-native-gesture-handler';
 
 /* ------------- Types and Action Creators ------------- */
 /* 
@@ -22,6 +23,8 @@ const { Types, Creators } = createActions({
 
     deleteRequest: { userId: undefined },
     deleteSuccess: { userId: undefined },
+
+    fail: { error: undefined },
 });
 
 
@@ -89,8 +92,6 @@ const createRequest = (state, { user }) =>
 const createSuccess = (state, { user }) => {
     const lastIdx = state.content[state.currentPage].length
 
-    console.log(user);
-
     const nextState = state.setIn(
         ['content', state.currentPage, lastIdx], 
         user
@@ -100,6 +101,10 @@ const createSuccess = (state, { user }) => {
 
     return nextState;
 }
+
+const fail = (state, { error }) => 
+    state.merge({ fetching: false, error })    
+
 
 
 /* ------------- Initial State ------------- */
@@ -126,6 +131,8 @@ export const reducer = createReducer(INITIAL_STATE, {
 
     [Types.CREATE_REQUEST]: createRequest,
     [Types.CREATE_SUCCESS]: createSuccess,
+
+    [Types.FAIL]: fail,
 });
 
 /* ------------- Selectors ------------- */

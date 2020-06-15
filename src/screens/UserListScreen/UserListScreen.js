@@ -13,7 +13,6 @@ import CreateUserFab from './CreateUserFab';
 import UserDetailsSheet from '~/screens/UserDetailsSheet';
 
 import styles from './UserListScreenStyle';
-import { page } from '../../sagas/UserSagas';
 
 export default function UserListScreen() {
     const dispatch = useDispatch();
@@ -39,6 +38,7 @@ export default function UserListScreen() {
     const renderPages = () => {
         const pagesList = [...Array(totalPages).keys()];
 
+        // Дополнительный View - workaround для ViewPager
         return pagesList.map((page) => (
             <View key={`page-${page}`}>
                 <UserPage

@@ -1,6 +1,5 @@
-import React, { useRef } from 'react';
-import { View, Text, Image } from 'react-native';
-import { RectButton } from 'react-native-gesture-handler';
+import React from 'react';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 
@@ -13,7 +12,7 @@ export default function UserListItem({ user, onPress }) {
 
     return (
         <View style={styles.userListItemContainer}>
-            <RectButton style={styles.userListItemContent} onPress={handlePress}>
+            <TouchableOpacity style={styles.userListItemContent} onPress={handlePress}>
                 <View style={styles.userInfo}>
                     <View style={styles.userAvatarContainer}>
                         <Image 
@@ -31,7 +30,7 @@ export default function UserListItem({ user, onPress }) {
                     </View>
                 </View>
                 <Ionicons name="ios-arrow-forward" size={18} />
-            </RectButton>
+            </TouchableOpacity>
         </View>
     );
 };
