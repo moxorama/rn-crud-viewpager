@@ -4,7 +4,8 @@ import { Metrics, Colors } from '~/theme';
 
 export default StyleSheet.create({
     userDetailsContainer: {
-        padding: Metrics.baseMargin * 2,
+        paddingHorizontal: Metrics.baseMargin * 2,
+        paddingVertical: Metrics.baseMargin,
     },
 
     avatarContainer: {

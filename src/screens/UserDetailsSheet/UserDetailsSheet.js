@@ -113,9 +113,7 @@ const UserDetailsSheet = forwardRef(({ }, ref) => {
         )
     }
 
-    if (user === null) {
-        return null;
-    }
+    console.log('render', user);
 
     return (
         <Modalize
@@ -126,7 +124,7 @@ const UserDetailsSheet = forwardRef(({ }, ref) => {
         >
             <View style={styles.userDetailsContainer}>
                 <View style={styles.avatarContainer}>
-                    <Image source={{ uri: user.avatar }} style={styles.avatar} />
+                    <Image source={{ uri: user?.avatar }} style={styles.avatar} />
                 </View>
                 <TextInput
                     autoFocus
